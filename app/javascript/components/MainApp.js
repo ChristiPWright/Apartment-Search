@@ -6,8 +6,11 @@ import { BrowserRouter as  Router, Route, Link } from 'react-router-dom'
 import PublicFeed from './pages/PublicFeed'
 import MyListings from './pages/MyListings'
 import Login from './pages/Login'
+import NewApartment from './pages/NewApartment'
 
 class MainApp extends React.Component {
+  
+  
   render () {
     const {
       logged_in,
@@ -40,10 +43,14 @@ class MainApp extends React.Component {
                <NavItem>
                  <NavLink to="/MyListings" tag={Link}>MyListings</NavLink>
                </NavItem>
+               <NavItem>
+                 <NavLink to="/NewApartment" tag={Link}>NewApartment</NavLink>
+               </NavItem>
             </Nav>
             <Route path="/" exact component={PublicFeed}/>
             <Route path="/Login" component={Login} />
             <Route path="/MyListings" component={MyListings} />
+            <Route path="/NewApartment" component={NewApartment} />
           </Router>  
         </div>
     );

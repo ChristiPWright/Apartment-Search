@@ -53,7 +53,7 @@ unit_attributes = [
     }
     ]
     
-# first_apartment = apartment_attributes.first    
+# first_apartment = apartment_attributes.first   - doesn't work b/c we need to pull from the database 
 apartment = user.apartments.first
 
 unit_attributes.each do |attributes| 
