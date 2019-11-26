@@ -1,0 +1,52 @@
+<%= form_for(unit) do |f| %>
+  <% if unit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(unit.errors.count, "error") %> prohibited this unit from being saved:</h2>
+
+      <ul>
+      <% unit.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :apartment_id %>
+    <%= f.number_field :apartment_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bed %>
+    <%= f.number_field :bed %>
+  </div>
+
+  <div class="field">
+    <%= f.label :bath %>
+    <%= f.number_field :bath %>
+  </div>
+
+  <div class="field">
+    <%= f.label :sf %>
+    <%= f.number_field :sf %>
+  </div>
+
+  <div class="field">
+    <%= f.label :rent %>
+    <%= f.number_field :rent %>
+  </div>
+
+  <div class="field">
+    <%= f.label :pets %>
+    <%= f.text_field :pets %>
+  </div>
+
+  <div class="field">
+    <%= f.label :features %>
+    <%= f.text_field :features %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
