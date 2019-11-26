@@ -35,10 +35,10 @@ class MainApp extends React.Component {
                  <NavLink to="/" tag ={Link}>PublicFeed</NavLink>
                </NavItem>
                <NavItem>
-                 <NavLink path="/Login" tag={Link}>Login</NavLink>
+                 <NavLink to="/Login" tag={Link}>Login</NavLink>
                </NavItem>
                <NavItem>
-                 <NavLink path="/MyListings" tag={Link}>MyListings</NavLink>
+                 <NavLink to="/MyListings" tag={Link}>MyListings</NavLink>
                </NavItem>
             </Nav>
             <Route path="/" exact component={PublicFeed}/>

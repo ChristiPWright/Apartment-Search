@@ -5,34 +5,38 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+# user = User.create!({email:"hi@gmail.com", password: "1233589"})
+user = User.where(email:"christi@yahoo.com").first_or_create do |user| 
+    user.update ({password:"12345678"})
+end
 
 apartment_attributes = [
     {
-        user_id: 1,
         address: "3972 Mount Everest Blvd",
         city: "Walnut Creek",
         state: "CA",
-        zip: 94596,
+        zip: "94596",
         contact_name: "Christi",
-        contact_number: 9252866407
+        contact_number: "925-286-6407"
     },
     {
-        user_id: 1,
         address: "16 Fraser Dr",
         city: "San Diego",
         state: "CA",
-        zip: 92111,
+        zip: "92111",
         contact_name: "Loren",
-        contact_number: 9259358453
+        contact_number: "925-935-8453"
     }
     ]
     
-    apartment_attributes.each do |attributes| Apartment.create(attributes)
+apartment_attributes.each do |attributes| 
+    user.apartments.where(address:attributes[:address]).first_or_create do |apartment|
+        apartment.update(attributes)
+    end
 end
 
 unit_attributes = [
     {
-        apartment_id: 1,
         bed: 2,
         bath: 1,
         sf: 900,
@@ -40,7 +44,7 @@ unit_attributes = [
         features: "in unit washer/dryer"
     },
     {
-        apartment_id: 2,
+        unit_name: "301",
         bed: 3,
         bath: 2,
         sf: 1500,
@@ -49,6 +53,12 @@ unit_attributes = [
     }
     ]
     
-    unit_attributes.each do |attributes| Unit.create(attributes)
+# first_apartment = apartment_attributes.first    
+apartment = user.apartments.first
+
+unit_attributes.each do |attributes| 
+    apartment.units.where(unit_name:attributes[:unit_name]).first_or_create do |unit|
+        unit.update(attributes)
+    end
 end
 
