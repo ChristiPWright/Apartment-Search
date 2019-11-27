@@ -2,46 +2,24 @@
  import {
   Col, Container, Row, ListGroup
 } from 'reactstrap'
-import { getApartments } from '../../api'
 
  class PublicFeed extends Component {
-    constructor(props) { 
-    super(props)
-      this.state = {
-        errors: null,  
-        apartments: [],
-        units: [],
         
-      }
-      this.loadApartments()
-    } 
-    
-    loadApartments = () => {
-        getApartments()
-        .then((response) => {
-            if(response.error){
-                this.setState({errors: response.errors})
-            }else{
-                this.setState({apartments: response})
-            }
-        })
-    } 
-     
    render() {
      return(
         <div>   
            <h1>Public Feed</h1>
             <React.Fragment>
-                {this.state.errors &&
+                {this.props.errors &&
                     <div>
                         <h3> There is a problem</h3>
                         <ul>
-                            {this.state.errors.map((error)=> <li>error</li>)}
+                            {this.props.errors.map((error)=> <li>error</li>)}
                         </ul>
                     </div>
                 }
                 
-                {this.state.apartments.map((apartment, index)=>{
+                {this.props.apartments.map((apartment, index)=>{
                     return(
                         <div key={index}>
                         <h2 >{apartment.address}, {apartment.city}, {apartment.state} {apartment.zip} </h2>
