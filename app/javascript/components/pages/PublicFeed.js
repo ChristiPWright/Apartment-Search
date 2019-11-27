@@ -10,23 +10,7 @@ import { getApartments } from '../../api'
       this.state = {
         errors: null,  
         apartments: [],
-        units: [
-          {
-            bed: 2,
-            bath: 1,
-            sf: 900,
-            pets: "cats only",
-            features: "in unit washer/dryer"
-          },
-          {
-            unit_name: "301",
-            bed: 3,
-            bath: 2,
-            sf: 1500,
-            pets: "fish only",
-            features: "in unit washer/dryer"
-          }
-        ],
+        units: [],
         
       }
       this.loadApartments()

@@ -12,9 +12,15 @@ const getApartments = () => {
 }
 
 
-
-const createApartments =() => {
-    return fetch('/apartments')
+// takes form data pushes into Rails method POST(line 22) returns json of submitted data sends back to NewApartment's handleclick promise then
+const createApartment =(aptdata) => {
+    return fetch('/apartments.json', {
+       body: JSON.stringify(aptdata),
+        headers: {
+            'Content-Type': 'application/json'
+        }, 
+        method: "POST"
+    })
         .then((response)=>{
             return response.json()
         })
@@ -22,5 +28,5 @@ const createApartments =() => {
 
 export {
     getApartments,
-    createApartments
+    createApartment
 }

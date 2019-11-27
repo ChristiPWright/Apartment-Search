@@ -1,11 +1,25 @@
- import React, { Component } from 'react'
+import React from "react"
+import { Nav, NavItem, NavLink } from 'reactstrap'
+import { BrowserRouter as  Router, Route, Link } from 'react-router-dom'
 
- class MyListings extends Component {
-   render() {
-     return(
-       <h1>My Listings</h1>
-     )
-   }
- }
+import NewApartment from './NewApartment'
 
- export default MyListings
+class MyListings extends React.Component {
+  render() {
+    return(
+      <div>
+         <Router>  
+            <Nav>
+               <NavItem>
+                 <NavLink to="/NewApartment" tag={Link}>NewApartment</NavLink>
+               </NavItem>
+            </Nav>
+            <Route path="/NewApartment" component={NewApartment} />
+          </Router> 
+       </div>
+    )
+  }
+}
+
+export default MyListings
+ 

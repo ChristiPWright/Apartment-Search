@@ -1,6 +1,7 @@
 class ApartmentsController < ApplicationController
   before_action :set_apartment, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, only: [:create, :destroy, :edit, :update]
+  
   # GET /apartments
   # GET /apartments.json
   def index
@@ -24,7 +25,8 @@ class ApartmentsController < ApplicationController
   # POST /apartments
   # POST /apartments.json
   def create
-    @apartment = Apartment.new(apartment_params)
+    @apartment = current_user.apartments.new(apartment_params)
+    
 
     respond_to do |format|
       if @apartment.save

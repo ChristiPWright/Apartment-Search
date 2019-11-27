@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+User Stories
 
-Things you may want to cover:
+Story: As an un-registered guest on the website, I can go to a web page and see a list of available apartments.
 
-* Ruby version
+Apartments have: two street designations, a city, postal code, state, and country, in a addition to a building manager's contact info, which includes: name, phone number, and hours to contact
 
-* System dependencies
+Story: As an un-registered guest on the website, I can click on an apartment to view its details
 
-* Configuration
+Story: As an un-registered guest on the website, I can see a header element at the top of each page containing navigation to the other pages
 
-* Database creation
+Story: As a un-registered guest, I can go to registration page with a form and register as a new user. Once I have registered, I should be redirected to the index view of all apartments
 
-* Database initialization
+Story: As a logged in user, I can go to a new apartment page with a form and create a new apartment
 
-* How to run the test suite
+Story: As a logged in user, I can edit the information for any apartment I have created, but I cannot edit the information for apartments that belong to someone else
 
-* Services (job queues, cache servers, search engines, etc.)
+Story: As a logged in user, I should be able to log out
 
-* Deployment instructions
-
-* ...
+Story: As a registered user who has not logged in, I can go to a login page

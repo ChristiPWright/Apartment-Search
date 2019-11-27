@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { 
     Button, Form, FormGroup, Label, Input, FormText 
 } from 'reactstrap'
-import { createApartments } from '../../api'
+import { createApartment } from '../../api'
 
 class NewApartment extends Component {
     constructor(props) {
@@ -25,20 +25,19 @@ class NewApartment extends Component {
         }
     }
     
+    // as user types in form line entry, state is updated with that form data
     handleChange = (event) => {
         let {form} = this.state
         form[event.target.name] = event.target.value
         this.setState({form: form})
     }
     
-    handleClick = (event) => {
-        
-    }
-    
-    handleNewApartment = (newApartmentInfo) => {
-        createApartment(newApartmentInfo)
-        .then(successApartment => {
-            console.log("Success! New Apartment: ",successApartment);
+   
+    //submit button calls fetch POST function with paramater of form state to push form data to Rails
+    handleClick = () => {
+        createApartment(this.state.form)
+        .then(response => {
+            console.log("Success! New Apartment: ",response);
         })
     }
     
