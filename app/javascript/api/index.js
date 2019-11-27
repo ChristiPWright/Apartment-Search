@@ -11,6 +11,16 @@ const getApartments = () => {
         })
 }
 
+
+
+const createApartments =() => {
+    return fetch('/apartments')
+        .then((response)=>{
+            return response.json()
+        })
+}
+
 export {
-    getApartments
+    getApartments,
+    createApartments
 }

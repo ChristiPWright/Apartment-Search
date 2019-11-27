@@ -3,11 +3,13 @@ import ReactDOM from 'react-dom'
 import { 
     Button, Form, FormGroup, Label, Input, FormText 
 } from 'reactstrap'
+import { createApartments } from '../../api'
 
 class NewApartment extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            success: false,
             form: {
                 bldg_name: '',
                 address: '',
@@ -31,6 +33,13 @@ class NewApartment extends Component {
     
     handleClick = (event) => {
         
+    }
+    
+    handleNewApartment = (newApartmentInfo) => {
+        createApartment(newApartmentInfo)
+        .then(successApartment => {
+            console.log("Success! New Apartment: ",successApartment);
+        })
     }
     
     render () {
