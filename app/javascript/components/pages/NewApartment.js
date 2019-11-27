@@ -29,6 +29,10 @@ class NewApartment extends Component {
         this.setState({form: form})
     }
     
+    handleClick = (event) => {
+        
+    }
+    
     render () {
         return (
             <div>
@@ -144,7 +148,7 @@ class NewApartment extends Component {
                         />
                     </FormGroup>
                     <FormGroup>
-                        <Button>Submit</Button>
+                        <Button onClick={this.handleClick} >Submit</Button>
                     </FormGroup>
                 </Form>
             </div>

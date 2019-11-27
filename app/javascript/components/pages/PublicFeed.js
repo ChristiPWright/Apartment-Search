@@ -2,11 +2,14 @@
  import {
   Col, Container, Row, ListGroup
 } from 'reactstrap'
+import { getApartments } from '../../api'
 
  class PublicFeed extends Component {
     constructor(props) { 
     super(props)
       this.state = {
+        errors: null,  
+        apartments: [],
         units: [
           {
             bed: 2,
@@ -24,36 +27,39 @@
             features: "in unit washer/dryer"
           }
         ],
-        apartments: [
-          {
-            address: "3972 Mount Everest Blvd",
-            city: "Walnut Creek",
-            state: "CA",
-            zip: "94596",
-            contact_name: "Christi",
-            contact_number: "925-286-6407"
-          },
-          {
-            address: "16 Fraser Dr",
-            city: "San Diego",
-            state: "CA",
-            zip: "92111",
-            contact_name: "Loren",
-            contact_number: "925-935-8453"
-          }
-        ]
+        
       }
+      this.loadApartments()
+    } 
+    
+    loadApartments = () => {
+        getApartments()
+        .then((response) => {
+            if(response.error){
+                this.setState({errors: response.errors})
+            }else{
+                this.setState({apartments: response})
+            }
+        })
     } 
      
    render() {
      return(
         <div>   
            <h1>Public Feed</h1>
-            <Container>   
-               <Row>
-                {this.state.apartments.map((apartment, index) => {
+            <React.Fragment>
+                {this.state.errors &&
+                    <div>
+                        <h3> There is a problem</h3>
+                        <ul>
+                            {this.state.errors.map((error)=> <li>error</li>)}
+                        </ul>
+                    </div>
+                }
+                
+                {this.state.apartments.map((apartment, index)=>{
                     return(
-                    <div key={index}>
+                        <div key={index}>
                         <h2 >{apartment.address}, {apartment.city}, {apartment.state} {apartment.zip} </h2>
                         <ul>
                              <li > Bulding Name: {apartment.bldg_name} </li>
@@ -66,8 +72,7 @@
                     </div>
                     )
                 })}
-               </Row>
-            </Container>    
+            </React.Fragment>
         </div>
      )
    }
